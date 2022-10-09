@@ -8,27 +8,21 @@ result = 0
 
 result += N // 5
 N = N % 5
+# 0 ~ 4 의 값이 남음
+count = 0
+while N % 3 != 0:
+    if N + 5 <= save_N:
+        N += 5
+    result -= 1
+    count += 1
 
-result += N // 3
-N = N % 3
+    if count == 2:
+        break
 
-# 만약 나머지가 남았는데, 5를 다시 더해서 3으로 만들 수 있는지 테스트하려면
-# 3과 5의 공배수인 15 전까지만 테스트하면 됨
-if N != 0:
-    for i in range(1, 14): # 1 ~ 14
-        N += 1
-        if N > save_N:
-            break 
-
-        if i in [1, 6, 11]:
-            result -= 1
-
-        if N % 3 == 0:
-            result += N // 3
-            N = 0
-            break
-
-if N != 0:
+if N % 3 == 0:
+    result += N // 3
+else:
     result = -1
 
 print(result)
+
